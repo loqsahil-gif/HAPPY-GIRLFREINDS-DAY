@@ -25,7 +25,7 @@
       position: relative;
     }
 
-    /* Floating Background Hearts Animation */
+    /* Floating Background Hearts */
     .heart-bg {
       position: fixed;
       top: 0;
@@ -45,25 +45,19 @@
     }
 
     @keyframes floatUp {
-      0% {
-        transform: translateY(0) scale(0.8) rotate(0deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-110vh) scale(1.3) rotate(360deg);
-        opacity: 0;
-      }
+      0% { transform: translateY(0) scale(0.8) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-110vh) scale(1.3) rotate(360deg); opacity: 0; }
     }
 
-    /* Card Containers */
+    /* Main Container */
     .lock-card, .book-card {
-      background: rgba(255, 255, 255, 0.92);
+      background: rgba(255, 255, 255, 0.94);
       backdrop-filter: blur(15px);
-      padding: 40px 30px;
+      padding: 35px 25px;
       border-radius: 30px;
       box-shadow: 0 20px 50px rgba(214, 51, 132, 0.35);
       text-align: center;
-      max-width: 480px;
+      max-width: 490px;
       width: 100%;
       position: relative;
       z-index: 10;
@@ -74,19 +68,19 @@
     h1, h2 {
       font-family: 'Dancing Script', cursive;
       color: #d63384;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
-    h1 { font-size: 3rem; text-shadow: 2px 2px 4px rgba(214, 51, 132, 0.15); }
-    h2 { font-size: 2.3rem; }
+    h1 { font-size: 2.8rem; text-shadow: 2px 2px 4px rgba(214, 51, 132, 0.15); }
+    h2 { font-size: 2.2rem; }
 
     .subtitle {
       color: #6c757d;
-      font-size: 0.95rem;
-      margin-bottom: 25px;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
     }
 
-    /* Date Inputs */
+    /* Lock Screen Input */
     .date-inputs {
       display: flex;
       justify-content: center;
@@ -106,7 +100,6 @@
       color: #d63384;
       margin-bottom: 6px;
       text-transform: uppercase;
-      letter-spacing: 1px;
     }
 
     .date-field input {
@@ -132,7 +125,7 @@
       background: linear-gradient(45deg, #ff4b72, #ff758c);
       color: white;
       border: none;
-      padding: 14px 40px;
+      padding: 12px 35px;
       font-size: 1.05rem;
       font-weight: 600;
       border-radius: 30px;
@@ -148,80 +141,84 @@
 
     .error-text {
       color: #e63946;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       margin-top: 15px;
       display: none;
-      animation: shake 0.4s ease-in-out;
     }
 
     /* Page Animations */
-    .hidden {
-      display: none !important;
-      opacity: 0;
-    }
-
-    .page {
-      display: none;
-    }
-
+    .hidden { display: none !important; opacity: 0; }
+    .page { display: none; }
     .page.active {
       display: block;
-      animation: slideInScale 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      animation: slideInScale 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
     }
 
     @keyframes slideInScale {
-      from {
-        opacity: 0;
-        transform: translateY(30px) scale(0.9);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
+      from { opacity: 0; transform: translateY(25px) scale(0.92); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      20%, 60% { transform: translateX(-8px); }
-      40%, 80% { transform: translateX(8px); }
-    }
-
-    .page-img {
-      width: 100%;
-      max-height: 220px;
-      object-fit: cover;
-      border-radius: 20px;
+    /* SURROUNDING COLLAGE LAYOUT */
+    .collage-frame {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
       margin: 15px 0;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-      transition: transform 0.3s;
     }
 
-    .page-img:hover {
-      transform: scale(1.02);
-    }
-
-    .quote-box {
-      background: #fff0f3;
-      border-left: 4px solid #ff4b72;
-      padding: 16px;
-      border-radius: 12px;
-      margin: 15px 0;
-      text-align: left;
-      box-shadow: 0 4px 10px rgba(255, 117, 140, 0.1);
-    }
-
-    .quote-box p {
-      font-size: 0.95rem;
-      color: #4a4a4a;
-      line-height: 1.6;
+    .quote-top, .quote-bottom {
       font-style: italic;
+      color: #d63384;
+      font-size: 0.88rem;
+      font-weight: 500;
+      background: #fff0f3;
+      padding: 8px 14px;
+      border-radius: 20px;
+      border: 1px dashed #ffb6c1;
+      width: 100%;
+    }
+
+    .middle-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .quote-side {
+      flex: 1;
+      font-style: italic;
+      color: #4a4a4a;
+      font-size: 0.82rem;
+      background: #fff0f3;
+      padding: 10px;
+      border-radius: 12px;
+      border-left: 3px solid #ff4b72;
+      text-align: center;
+    }
+
+    .center-img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #ff758c;
+      box-shadow: 0 8px 20px rgba(255, 75, 114, 0.3);
+      transition: transform 0.4s ease;
+    }
+
+    .center-img:hover {
+      transform: scale(1.06) rotate(3deg);
     }
 
     /* Navigation Buttons */
     .nav-buttons {
       display: flex;
       justify-content: space-between;
-      margin-top: 25px;
+      margin-top: 20px;
     }
 
     .nav-btn {
@@ -233,7 +230,6 @@
       cursor: pointer;
       font-weight: 600;
       transition: 0.3s;
-      box-shadow: 0 4px 12px rgba(255, 117, 140, 0.3);
     }
 
     .nav-btn:hover {
@@ -241,13 +237,9 @@
       transform: translateY(-2px);
     }
 
-    .nav-btn:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-      transform: none;
-    }
+    .nav-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
-    /* UNFORGETTABLE LAST PAGE STYLING */
+    /* Final Page Styling */
     .final-page {
       background: linear-gradient(135deg, #fff0f3 0%, #ffe6ea 100%);
       padding: 25px;
@@ -262,38 +254,32 @@
     }
 
     .heartbeat-icon {
-      font-size: 4rem;
+      font-size: 3.5rem;
       animation: heartbeat 1.2s infinite;
       display: inline-block;
-      margin: 10px 0;
     }
 
     @keyframes heartbeat {
-      0% { transform: scale(1); }
-      14% { transform: scale(1.25); }
-      28% { transform: scale(1); }
-      42% { transform: scale(1.25); }
-      70% { transform: scale(1); }
+      0%, 100% { transform: scale(1); }
+      14%, 42% { transform: scale(1.25); }
     }
 
     .days-counter {
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 600;
       color: #d63384;
       background: #fff;
-      padding: 10px 20px;
+      padding: 8px 18px;
       border-radius: 20px;
       display: inline-block;
-      margin: 15px 0;
+      margin: 12px 0;
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
 
-    /* Confetti Animation */
     .confetti-piece {
       position: absolute;
       width: 10px;
       height: 10px;
-      background: #ff4b72;
       top: 0;
       opacity: 0.8;
       animation: fall 3s infinite linear;
@@ -306,7 +292,7 @@
 </head>
 <body>
 
-  <!-- Floating Background Hearts -->
+  <!-- Floating Hearts Container -->
   <div class="heart-bg" id="heartContainer"></div>
 
   <!-- LOCK SCREEN -->
@@ -339,48 +325,75 @@
     <!-- PAGE 1: COVER -->
     <div class="page active" id="page1">
       <h1>Happy Girlfriends Day!</h1>
-      <p class="subtitle">A special little digital memory book made just for you.</p>
-      <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=600&q=80" class="page-img" alt="Love">
-      <p style="color: #6c757d; font-size: 0.9rem; margin-top: 10px;">Click Next to begin ➔</p>
+      <p class="subtitle">A digital collage of love made just for you.</p>
+      <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=600&q=80" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 4px solid #ff758c; margin: 10px 0;" alt="Cover Love">
+      <p style="color: #6c757d; font-size: 0.9rem; margin-top: 15px;">Click Next to open our story ➔</p>
     </div>
 
-    <!-- PAGE 2: EVERYDAY COMFORT -->
+    <!-- PAGE 2: COMFORT & LOVE (PICTURE SURROUNDED BY 5 QUOTES) -->
     <div class="page" id="page2">
-      <h2>Everyday Magic</h2>
-      <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=600&q=80" class="page-img" alt="Cozy">
-      <div class="quote-box">
-        <p>"I loved you yesterday, I love you still, I always have, I always will. You turn my ordinary days into something extraordinary just by being in them."</p>
-      </div>
-      <div class="quote-box">
-        <p>"In your warmth, I found my favorite place to rest. You aren't just my girlfriend; you're my safe haven."</p>
+      <h2>Everyday Comfort</h2>
+      
+      <div class="collage-frame">
+        <div class="quote-top">"You make ordinary days feel like poetry."</div>
+        
+        <div class="middle-section">
+          <div class="quote-side">"My safest haven in this entire world."</div>
+          
+          <!-- CENTER PICTURE -->
+          <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=600&q=80" class="center-img" alt="Cozy Love">
+          
+          <div class="quote-side">"You are my favorite notification."</div>
+        </div>
+
+        <div class="quote-bottom">"In your smile, I found my peaceful quiet space."</div>
+        <div class="quote-top" style="font-size: 0.8rem; background: transparent; border: none; color: #ff4b72;">✨ Little moments, big love ✨</div>
       </div>
     </div>
 
-    <!-- PAGE 3: LAUGHTER & FUN -->
+    <!-- PAGE 3: LAUGHTER & JOY (PICTURE SURROUNDED BY 5 QUOTES) -->
     <div class="page" id="page3">
-      <h2>Joy & Laughter</h2>
-      <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=600&q=80" class="page-img" alt="Laughter">
-      <div class="quote-box">
-        <p>"Life with you is a continuous adventure filled with ridiculous laughs and unforgettable moments. Thank you for being my partner in crime."</p>
-      </div>
-      <div class="quote-box">
-        <p>"If I could give you one thing in life, I would give you the ability to see yourself through my eyes, only then would you realize how truly special you are to me."</p>
+      <h2>Laughter & Joy</h2>
+      
+      <div class="collage-frame">
+        <div class="quote-top">"Life is infinite times better when we're laughing."</div>
+        
+        <div class="middle-section">
+          <div class="quote-side">"Forever my partner in crime."</div>
+          
+          <!-- CENTER PICTURE -->
+          <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=600&q=80" class="center-img" alt="Joyful Love">
+          
+          <div class="quote-side">"You make my heart smile instantly."</div>
+        </div>
+
+        <div class="quote-bottom">"Falling for you every single day, all over again."</div>
+        <div class="quote-top" style="font-size: 0.8rem; background: transparent; border: none; color: #ff4b72;">✨ Never a dull moment with you ✨</div>
       </div>
     </div>
 
-    <!-- PAGE 4: FOREVER VIBES -->
+    <!-- PAGE 4: NIGHT SKY & FOREVER (PICTURE SURROUNDED BY 5 QUOTES) -->
     <div class="page" id="page4">
       <h2>Under The Stars</h2>
-      <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80" class="page-img" alt="Stars">
-      <div class="quote-box">
-        <p>"I look at you and see the rest of my life in front of my eyes. Loving you is the easiest and best choice I've ever made."</p>
-      </div>
-      <div class="quote-box">
-        <p>"To the moon, the stars, and back. National Girlfriends Day may be once a year, but loving you is my full-time forever."</p>
+      
+      <div class="collage-frame">
+        <div class="quote-top">"To the moon, the stars, and back again."</div>
+        
+        <div class="middle-section">
+          <div class="quote-side">"Our love was written in the stars."</div>
+          
+          <!-- CENTER PICTURE -->
+          <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80" class="center-img" alt="Night Sky Love">
+          
+          <div class="quote-side">"You are my favorite love story."</div>
+        </div>
+
+        <div class="quote-bottom">"My today and all of my tomorrows."</div>
+        <div class="quote-top" style="font-size: 0.8rem; background: transparent; border: none; color: #ff4b72;">✨ Always & Forever ✨</div>
       </div>
     </div>
 
-    <!-- PAGE 5: UNFORGETTABLE FINAL PAGE -->
+    <!-- PAGE 5: UNFORGETTABLE LAST PAGE (NO NEXT BUTTON) -->
     <div class="page" id="page5">
       <div class="final-page">
         <div class="heartbeat-icon">💖</div>
@@ -388,8 +401,8 @@
         
         <div class="days-counter" id="daysTogether">Calculating our love...</div>
 
-        <p style="font-size: 1.05rem; color: #4a4a4a; line-height: 1.6; margin: 15px 0;">
-          National Girlfriends Day is just one calendar date, but I promise to love, protect, and cherish you <strong>every single day</strong> of my life.
+        <p style="font-size: 0.98rem; color: #4a4a4a; line-height: 1.6; margin: 15px 0;">
+          National Girlfriends Day is just one day on the calendar, but I promise to cherish, protect, and love you <strong>every single second</strong> of my life.
         </p>
 
         <button class="btn" onclick="triggerLoveShower()" style="margin-top: 10px;">Send Love Shower 💕</button>
@@ -405,7 +418,7 @@
   </div>
 
   <script>
-    // ⚙️ EXACT ANNIVERSARY DATE:
+    // ⚙️ YOUR ANNIVERSARY DATE:
     const CORRECT_DAY = "01";
     const CORRECT_MONTH = "07";
     const CORRECT_YEAR = "2024";
@@ -413,7 +426,7 @@
     let currentPage = 1;
     const totalPages = 5;
 
-    // Generate Floating Background Hearts
+    // Floating Background Hearts
     function createHearts() {
       const container = document.getElementById("heartContainer");
       const heartsArr = ['❤️', '💖', '🌸', '✨', '💕'];
@@ -463,7 +476,6 @@
       }
       document.getElementById(`page${p}`).classList.add("active");
 
-      // Button state logic
       document.getElementById("prevBtn").disabled = (p === 1);
       
       // HIDE NEXT BUTTON ON LAST PAGE
