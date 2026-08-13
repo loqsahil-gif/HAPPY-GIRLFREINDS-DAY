@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Girlfriends Day! ❤️</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #ffe6ea;
+      color: #4a4a4a;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+    .lock-screen, .book-container {
+      max-width: 500px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    input {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      width: 150px;
+      text-align: center;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #ff4b72;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    .hidden { display: none; }
+    .page {
+      border: 2px dashed #ffb6c1;
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 30px;
+      background: #fff0f3;
+      position: relative;
+    }
+    .quotes-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-style: italic;
+      color: #d63384;
+    }
+    .art-placeholder {
+      font-size: 50px;
+      margin: 15px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PASSCODE LOCK SCREEN -->
+  <div id="lockScreen" class="lock-screen">
+    <h2>🔒 Secret Area</h2>
+    <p>Enter our special date to unlock (DDMM):</p>
+    <input type="password" id="passcode" placeholder="e.g. 0108">
+    <button onclick="unlock()">Unlock ❤️</button>
+    <p id="errorMsg" style="color: red; display: none;">Wrong passcode! Try again 😉</p>
+  </div>
+
+  <!-- MAIN BOOK CONTENT -->
+  <div id="bookContent" class="book-container hidden">
+    
+    <!-- PAGE 1: COVER -->
+    <div class="page">
+      <h1>💖 HAPPY GIRLFRIENDS DAY 💖</h1>
+      <p>A little digital book made just for you.</p>
+    </div>
+
+    <!-- PAGE 2: COMFORT -->
+    <div class="page">
+      <p>"You make ordinary days feel special."</p>
+      <div class="art-placeholder">☕🛋️</div>
+      <div class="quotes-grid">
+        <span>• My favorite place is next to you.</span>
+        <span>• You're my favorite notification.</span>
+        <span>• Safe space.</span>
+        <span>• Little moments, big love.</span>
+      </div>
+    </div>
+
+    <!-- PAGE 3: LAUGHTER -->
+    <div class="page">
+      <p>"Life is better when we're laughing."</p>
+      <div class="art-placeholder">😄✨</div>
+      <div class="quotes-grid">
+        <span>• My partner in crime.</span>
+        <span>• You make my heart smile.</span>
+        <span>• Never a dull moment with you.</span>
+        <span>• Falling for you every single day.</span>
+      </div>
+    </div>
+
+    <!-- PAGE 4: WARMTH -->
+    <div class="page">
+      <p>"Home is whenever I'm with you."</p>
+      <div class="art-placeholder">🤗❤️</div>
+      <div class="quotes-grid">
+        <span>• Your hugs fix everything.</span>
+        <span>• Hold my hand and don't let go.</span>
+        <span>• My favorite person.</span>
+        <span>• Warmth in every moment.</span>
+      </div>
+    </div>
+
+    <!-- PAGE 5: FOREVER -->
+    <div class="page">
+      <p>"To the moon and back."</p>
+      <div class="art-placeholder">🌙⭐</div>
+      <div class="quotes-grid">
+        <span>• Written in the stars.</span>
+        <span>• My today and all of my tomorrows.</span>
+        <span>• You are my favorite story.</span>
+        <span>• Always & Forever.</span>
+      </div>
+    </div>
+
+    <!-- PAGE 6: BACK COVER -->
+    <div class="page">
+      <h3>Made with love for you ❤️</h3>
+    </div>
+
+  </div>
+
+  <script>
+    function unlock() {
+      // SET YOUR PASSCODE HERE (e.g. '0108' for 1st August)
+      const correctCode = "0108"; 
+      const input = document.getElementById("passcode").value;
+      
+      if (input === correctCode) {
+        document.getElementById("lockScreen").classList.add("hidden");
+        document.getElementById("bookContent").classList.remove("hidden");
+      } else {
+        document.getElementById("errorMsg").style.display = "block";
+      }
+    }
+  </script>
+</body>
+</html>
