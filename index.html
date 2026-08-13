@@ -3,150 +3,322 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Girlfriends Day! ❤️</title>
+  <title>Happy Girlfriends Day ❤️</title>
   <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #ffe6ea;
-      color: #4a4a4a;
-      text-align: center;
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap');
+
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #feada6 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
       padding: 20px;
     }
-    .lock-screen, .book-container {
-      max-width: 500px;
-      margin: 40px auto;
-      background: white;
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    }
-    input {
-      padding: 10px;
-      font-size: 16px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      width: 150px;
+
+    /* Lock Screen & Book Styling */
+    .lock-card, .book-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 40px 30px;
+      border-radius: 25px;
+      box-shadow: 0 15px 35px rgba(214, 51, 132, 0.25);
       text-align: center;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #ff4b72;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-left: 10px;
-    }
-    .hidden { display: none; }
-    .page {
-      border: 2px dashed #ffb6c1;
-      border-radius: 15px;
-      padding: 20px;
-      margin-bottom: 30px;
-      background: #fff0f3;
+      max-width: 450px;
+      width: 100%;
       position: relative;
+      z-index: 10;
+      transition: all 0.5s ease-in-out;
     }
-    .quotes-grid {
+
+    h1, h2 {
+      font-family: 'Dancing Script', cursive;
+      color: #d63384;
+      margin-bottom: 15px;
+    }
+
+    h1 { font-size: 2.8rem; }
+    h2 { font-size: 2.2rem; }
+
+    .subtitle {
+      color: #6c757d;
+      font-size: 0.95rem;
+      margin-bottom: 25px;
+    }
+
+    /* Date Inputs Section */
+    .date-inputs {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 25px;
+    }
+
+    .date-field {
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      font-style: italic;
-      color: #d63384;
+      align-items: center;
     }
-    .art-placeholder {
-      font-size: 50px;
+
+    .date-field label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #d63384;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
+
+    .date-field input {
+      width: 70px;
+      height: 50px;
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 600;
+      border: 2px solid #ffc2d1;
+      border-radius: 12px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    .date-field input:focus {
+      border-color: #d63384;
+      box-shadow: 0 0 10px rgba(214, 51, 132, 0.3);
+    }
+
+    .btn {
+      background: linear-gradient(45deg, #ff4b72, #ff758c);
+      color: white;
+      border: none;
+      padding: 12px 35px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(255, 75, 114, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(255, 75, 114, 0.6);
+    }
+
+    .error-text {
+      color: #e63946;
+      font-size: 0.85rem;
+      margin-top: 15px;
+      display: none;
+    }
+
+    /* Book & Navigation Styling */
+    .hidden {
+      display: none !important;
+      opacity: 0;
+    }
+
+    .page {
+      display: none;
+      animation: fadeIn 0.6s ease-in-out forwards;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    .page-img {
+      width: 100%;
+      max-height: 220px;
+      object-fit: cover;
+      border-radius: 15px;
       margin: 15px 0;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .quote-box {
+      background: #fff0f3;
+      border-left: 4px solid #ff4b72;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 15px 0;
+      text-align: left;
+    }
+
+    .quote-box p {
+      font-size: 0.95rem;
+      color: #4a4a4a;
+      line-height: 1.5;
+      font-style: italic;
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 25px;
+    }
+
+    .nav-btn {
+      background: #ffb6c1;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .nav-btn:hover { background: #ff4b72; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
 
-  <!-- PASSCODE LOCK SCREEN -->
-  <div id="lockScreen" class="lock-screen">
-    <h2>🔒 Secret Area</h2>
-    <p>Enter our special date to unlock (DDMM):</p>
-    <input type="password" id="passcode" placeholder="e.g. 0108">
-    <button onclick="unlock()">Unlock ❤️</button>
-    <p id="errorMsg" style="color: red; display: none;">Wrong passcode! Try again 😉</p>
+  <!-- LOCK SCREEN -->
+  <div class="lock-card" id="lockScreen">
+    <h2>Secret Area 🔒</h2>
+    <p class="subtitle">Give our anniversary date to unlock ❤️</p>
+    
+    <div class="date-inputs">
+      <div class="date-field">
+        <label>Date</label>
+        <input type="text" id="day" maxlength="2" placeholder="DD">
+      </div>
+      <div class="date-field">
+        <label>Month</label>
+        <input type="text" id="month" maxlength="2" placeholder="MM">
+      </div>
+      <div class="date-field">
+        <label>Year</label>
+        <input type="text" id="year" maxlength="4" placeholder="YYYY">
+      </div>
+    </div>
+
+    <button class="btn" onclick="checkDate()">Unlock ✨</button>
+    <p class="error-text" id="errorMsg">Incorrect date! Try again my love 😉</p>
   </div>
 
-  <!-- MAIN BOOK CONTENT -->
-  <div id="bookContent" class="book-container hidden">
+  <!-- BOOK CONTENT -->
+  <div class="book-card hidden" id="bookContent">
     
     <!-- PAGE 1: COVER -->
-    <div class="page">
-      <h1>💖 HAPPY GIRLFRIENDS DAY 💖</h1>
-      <p>A little digital book made just for you.</p>
+    <div class="page active" id="page1">
+      <h1>Happy Girlfriends Day!</h1>
+      <p class="subtitle">A special little digital memory book made just for you.</p>
+      <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=600&q=80" class="page-img" alt="Love">
+      <p style="color: #6c757d; font-size: 0.9rem; margin-top: 10px;">Click Next to begin ➔</p>
     </div>
 
-    <!-- PAGE 2: COMFORT -->
-    <div class="page">
-      <p>"You make ordinary days feel special."</p>
-      <div class="art-placeholder">☕🛋️</div>
-      <div class="quotes-grid">
-        <span>• My favorite place is next to you.</span>
-        <span>• You're my favorite notification.</span>
-        <span>• Safe space.</span>
-        <span>• Little moments, big love.</span>
+    <!-- PAGE 2: EVERYDAY COMFORT -->
+    <div class="page" id="page2">
+      <h2>Everyday Magic</h2>
+      <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=600&q=80" class="page-img" alt="Cozy">
+      <div class="quote-box">
+        <p>"I loved you yesterday, I love you still, I always have, I always will. You turn my ordinary days into something extraordinary just by being in them."</p>
+      </div>
+      <div class="quote-box">
+        <p>"In your warmth, I found my favorite place to rest. You aren't just my girlfriend; you're my safe haven."</p>
       </div>
     </div>
 
-    <!-- PAGE 3: LAUGHTER -->
-    <div class="page">
-      <p>"Life is better when we're laughing."</p>
-      <div class="art-placeholder">😄✨</div>
-      <div class="quotes-grid">
-        <span>• My partner in crime.</span>
-        <span>• You make my heart smile.</span>
-        <span>• Never a dull moment with you.</span>
-        <span>• Falling for you every single day.</span>
+    <!-- PAGE 3: LAUGHTER & FUN -->
+    <div class="page" id="page3">
+      <h2>Joy & Laughter</h2>
+      <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=600&q=80" class="page-img" alt="Laughter">
+      <div class="quote-box">
+        <p>"Life with you is a continuous adventure filled with ridiculous laughs and unforgettable moments. Thank you for being my partner in crime."</p>
+      </div>
+      <div class="quote-box">
+        <p>"If I could give you one thing in life, I would give you the ability to see yourself through my eyes, only then would you realize how truly special you are to me."</p>
       </div>
     </div>
 
-    <!-- PAGE 4: WARMTH -->
-    <div class="page">
-      <p>"Home is whenever I'm with you."</p>
-      <div class="art-placeholder">🤗❤️</div>
-      <div class="quotes-grid">
-        <span>• Your hugs fix everything.</span>
-        <span>• Hold my hand and don't let go.</span>
-        <span>• My favorite person.</span>
-        <span>• Warmth in every moment.</span>
+    <!-- PAGE 4: FOREVER VIBES -->
+    <div class="page" id="page4">
+      <h2>Under The Stars</h2>
+      <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80" class="page-img" alt="Stars">
+      <div class="quote-box">
+        <p>"I look at you and see the rest of my life in front of my eyes. Loving you is the easiest and best choice I've ever made."</p>
+      </div>
+      <div class="quote-box">
+        <p>"To the moon, the stars, and back. National Girlfriends Day may be once a year, but loving you is my full-time forever."</p>
       </div>
     </div>
 
-    <!-- PAGE 5: FOREVER -->
-    <div class="page">
-      <p>"To the moon and back."</p>
-      <div class="art-placeholder">🌙⭐</div>
-      <div class="quotes-grid">
-        <span>• Written in the stars.</span>
-        <span>• My today and all of my tomorrows.</span>
-        <span>• You are my favorite story.</span>
-        <span>• Always & Forever.</span>
-      </div>
+    <!-- PAGE 5: FINAL BACK COVER -->
+    <div class="page" id="page5">
+      <h1>Forever Yours ❤️</h1>
+      <img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=600&q=80" class="page-img" alt="Forever">
+      <p style="font-size: 1.1rem; color: #d63384; font-weight: 600; margin-top: 15px;">Happy Belated Girlfriends Day!</p>
+      <p style="color: #6c757d; font-size: 0.9rem; margin-top: 5px;">Made with all my heart, just for you.</p>
     </div>
 
-    <!-- PAGE 6: BACK COVER -->
-    <div class="page">
-      <h3>Made with love for you ❤️</h3>
+    <!-- NAVIGATION BUTTONS -->
+    <div class="nav-buttons" id="navBtns" style="display: none;">
+      <button class="nav-btn" onclick="prevPage()">⬅️ Previous</button>
+      <button class="nav-btn" onclick="nextPage()">Next ➔</button>
     </div>
 
   </div>
 
   <script>
-    function unlock() {
-      // SET YOUR PASSCODE HERE (e.g. '0108' for 1st August)
-      const correctCode = "0108"; 
-      const input = document.getElementById("passcode").value;
-      
-      if (input === correctCode) {
+    // ⚙️ SET TO YOUR EXACT ANNIVERSARY DATE:
+    const CORRECT_DAY = "01";    // 01
+    const CORRECT_MONTH = "07";  // July
+    const CORRECT_YEAR = "2024"; // 2024
+
+    let currentPage = 1;
+    const totalPages = 5;
+
+    function checkDate() {
+      const d = document.getElementById("day").value.trim();
+      const m = document.getElementById("month").value.trim();
+      const y = document.getElementById("year").value.trim();
+
+      const formattedD = d.padStart(2, '0');
+      const formattedM = m.padStart(2, '0');
+
+      if (formattedD === CORRECT_DAY && formattedM === CORRECT_MONTH && y === CORRECT_YEAR) {
         document.getElementById("lockScreen").classList.add("hidden");
-        document.getElementById("bookContent").classList.remove("hidden");
+        setTimeout(() => {
+          document.getElementById("lockScreen").style.display = "none";
+          document.getElementById("bookContent").classList.remove("hidden");
+          document.getElementById("navBtns").style.display = "flex";
+        }, 400);
       } else {
         document.getElementById("errorMsg").style.display = "block";
+      }
+    }
+
+    function showPage(p) {
+      for (let i = 1; i <= totalPages; i++) {
+        document.getElementById(`page${i}`).classList.remove("active");
+      }
+      document.getElementById(`page${p}`).classList.add("active");
+    }
+
+    function nextPage() {
+      if (currentPage < totalPages) {
+        currentPage++;
+        showPage(currentPage);
+      }
+    }
+
+    function prevPage() {
+      if (currentPage > 1) {
+        currentPage--;
+        showPage(currentPage);
       }
     }
   </script>
